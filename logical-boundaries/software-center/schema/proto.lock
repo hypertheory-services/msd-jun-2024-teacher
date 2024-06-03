@@ -1,0 +1,53 @@
+{
+  "definitions": [
+    {
+      "protopath": "catalog-item-created.proto",
+      "def": {
+        "messages": [
+          {
+            "name": "SoftwareCatalogItemCreated",
+            "fields": [
+              {
+                "id": 1,
+                "name": "id",
+                "type": "string"
+              },
+              {
+                "id": 2,
+                "name": "name",
+                "type": "string"
+              },
+              {
+                "id": 3,
+                "name": "description",
+                "type": "string"
+              },
+              {
+                "id": 7,
+                "name": "created_at",
+                "type": "google.protobuf.Timestamp"
+              },
+              {
+                "id": 8,
+                "name": "updated_at",
+                "type": "google.protobuf.Timestamp"
+              }
+            ]
+          }
+        ],
+        "imports": [
+          {
+            "path": "google/protobuf/timestamp.proto"
+          }
+        ],
+        "package": {},
+        "options": [
+          {
+            "name": "csharp_namespace",
+            "value": "SoftwareCatalogService.Types"
+          }
+        ]
+      }
+    }
+  ]
+}

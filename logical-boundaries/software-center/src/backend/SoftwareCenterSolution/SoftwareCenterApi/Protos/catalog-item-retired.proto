@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+import "google/protobuf/timestamp.proto";
+option csharp_namespace = "SoftwareCatalogService.Outgoing";
+// softwarecenter.catalog-item-retired
+
+message SoftwareCatalogItemRetired {
+    string id = 1;
+    google.protobuf.Timestamp retired_at = 2;
+}

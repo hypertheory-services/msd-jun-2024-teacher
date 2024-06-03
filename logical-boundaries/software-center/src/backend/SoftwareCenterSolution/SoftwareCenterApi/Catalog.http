@@ -1,0 +1,12 @@
+
+GET http://localhost:1337/api/catalog
+
+###
+
+POST http://localhost:1337/api/catalog
+Content-Type: application/json
+
+{
+  "title": "Visual Studio Code",
+  "description": "Edit Some Code"
+}

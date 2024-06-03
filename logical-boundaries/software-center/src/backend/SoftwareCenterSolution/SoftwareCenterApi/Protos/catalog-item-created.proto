@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+import "google/protobuf/timestamp.proto";
+option csharp_namespace = "SoftwareCatalogService.Outgoing";
+// published to kafka topic softwarecenter.catalog-item-created
+message SoftwareCatalogItemCreated {
+    string id = 1;
+    string name = 2;
+    string description = 3;
+
+    google.protobuf.Timestamp created_at = 7;
+    google.protobuf.Timestamp updated_at = 8;
+}

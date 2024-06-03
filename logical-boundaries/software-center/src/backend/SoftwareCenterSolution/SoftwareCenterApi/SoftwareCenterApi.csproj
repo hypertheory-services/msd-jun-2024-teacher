@@ -1,0 +1,48 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\browser\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Grpc.AspNetCore" Version="2.62.0" />
+    <PackageReference Include="Marten.AspNetCore" Version="7.5.0" />
+    <PackageReference Include="Marten.CommandLine" Version="7.5.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.19.6" />
+    <PackageReference Include="System.Text.RegularExpressions" Version="4.3.1" />
+    <PackageReference Include="WolverineFx" Version="2.1.2" />
+    <PackageReference Include="WolverineFx.FluentValidation" Version="2.1.2" />
+    <PackageReference Include="WolverineFx.Http" Version="2.1.2" />
+    <PackageReference Include="WolverineFx.Kafka" Version="2.1.2" />
+    <PackageReference Include="WolverineFx.Marten" Version="2.1.2" />
+    <PackageReference Include="WolverineFx.Postgresql" Version="2.1.2" />
+    <PackageReference Include="Yarp.ReverseProxy" Version="2.1.0" />
+  </ItemGroup>
+
+ 
+
+  <ItemGroup>
+    <Content Include="..\.dockerignore">
+      <Link>.dockerignore</Link>
+    </Content>
+  </ItemGroup>
+
+ 
+
+  <ItemGroup>
+    <Protobuf Include="Protos\catalog-item-created.proto" GrpcServices="None">
+      <SourceUri>https://raw.githubusercontent.com/hypertheory-services/msd-apr-2024/main/schema/software-center/catalog-item-created.proto?token=GHSAT0AAAAAACMC7PBPEBKV3EODAGS5TCMIZQMLKMA</SourceUri>
+    </Protobuf>
+    <Protobuf Include="Protos\catalog-item-retired.proto" GrpcServices="None">
+      <SourceUri>https://raw.githubusercontent.com/hypertheory-services/msd-apr-2024/main/schema/software-center/catalog-item-retired.proto?token=GHSAT0AAAAAACMC7PBOMP5CV6CD2IO7BV3KZQMLK5Q</SourceUri>
+    </Protobuf>
+  </ItemGroup>
+
+</Project>
