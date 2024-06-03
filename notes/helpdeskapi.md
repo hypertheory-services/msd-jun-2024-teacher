@@ -41,6 +41,7 @@ Issue:
   "id": "d27a8953-406e-494e-afc2-4b3aac5dd8d1",
   "description": "Want Clippy! Not Copilot!",
   "status": "Submitted",
+  
   "_links": [
     {
       "rel": "support",
