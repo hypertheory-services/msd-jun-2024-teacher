@@ -35,3 +35,8 @@ Content-Type: application/json
 {
   "description": "Want Clippy! Not Copilot!"
 }
+
+### Get Support Info
+
+GET {{apiUrl}}/catalog/c26f955c-2c2c-46b9-a4a1-32c09e3b654a/issues/cfffc6a6-0ace-4a7d-ba62-a63e501fc2fa/support
+Accept: application/json

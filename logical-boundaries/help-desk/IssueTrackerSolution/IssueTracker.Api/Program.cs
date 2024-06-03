@@ -13,6 +13,7 @@ using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddReverseProxy().LoadFromConfig(builder.Configuration.GetSection("ReverseProxy"));
 // sets up the auth stuff to read from our environment specific config.
 builder.Services.AddAuthentication().AddJwtBearer();
 builder.Services.AddScoped<IAuthorizationHandler, ShouldBeCreatorOfCatalogItemRequirementHandler>();
@@ -98,6 +99,8 @@ app.UseAuthentication();
 app.UseAuthorization(); // come back to this.
 
 app.MapControllers(); // create the call sheet. 
+
+app.MapReverseProxy(); // any request coming in, look at the YARP config to see if they should go somewhere else
 
 app.Run(); // start the process and block here waiting for requests.
 

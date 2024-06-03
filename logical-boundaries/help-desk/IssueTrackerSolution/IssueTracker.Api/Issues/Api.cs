@@ -68,17 +68,17 @@ public class Api(UserIdentityService userIdentityService, IDocumentSession sessi
         return Ok(response);
     }
 
-    [HttpGet("/catalog/{catalogItemId:guid}/issues/{issueId:guid}/support")]
-    public async Task<ActionResult> GetSupportInfoAsync()
-    {
-        var response = new SupportInfo
-        {
-            Name = "Bob Smith",
-            Email = "bob@company.com",
-            Phone = "555-1212"
-        };
-        return Ok(response);
-    }
+    //[HttpGet("/catalog/{catalogItemId:guid}/issues/{issueId:guid}/support")]
+    //public async Task<ActionResult> GetSupportInfoAsync()
+    //{
+    //    var response = new SupportInfo
+    //    {
+    //        Name = "Bob Smith",
+    //        Email = "bob@company.com",
+    //        Phone = "555-1212"
+    //    };
+    //    return Ok(response);
+    //}
 }
 
 public record UserCreateIssueRequestModel(string Description);
