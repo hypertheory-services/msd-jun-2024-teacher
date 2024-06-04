@@ -5,13 +5,19 @@ using Marten;
 using MicroElements.Swashbuckle.FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.OpenApi.Models;
+using Oakton;
 using System.Reflection;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using Wolverine;
+using Wolverine.Marten;
 
 
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Host.ApplyOaktonExtensions();
+
+
 
 builder.Services.AddReverseProxy().LoadFromConfig(builder.Configuration.GetSection("ReverseProxy"));
 // sets up the auth stuff to read from our environment specific config.
@@ -81,7 +87,12 @@ builder.Services.AddMarten(options =>
     options.UseSystemTextJsonForSerialization();
     options.Connection(connectionString);
     options.DatabaseSchemaName = "issues";
-}).UseLightweightSessions();
+}).UseLightweightSessions().IntegrateWithWolverine().AddAsyncDaemon(Marten.Events.Daemon.Resiliency.DaemonMode.Solo);
+
+builder.Host.UseWolverine(opts =>
+{
+    opts.Policies.AutoApplyTransactions();
+});
 
 
 var app = builder.Build();
@@ -102,6 +113,7 @@ app.MapControllers(); // create the call sheet.
 
 app.MapReverseProxy(); // any request coming in, look at the YARP config to see if they should go somewhere else
 
-app.Run(); // start the process and block here waiting for requests.
+
+return await app.RunOaktonCommands(args);
 
 public partial class Program { }

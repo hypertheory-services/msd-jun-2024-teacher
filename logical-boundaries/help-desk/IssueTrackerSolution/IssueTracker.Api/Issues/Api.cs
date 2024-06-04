@@ -5,10 +5,11 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
 using System.Text.Json.Serialization;
+using Wolverine;
 
 namespace IssueTracker.Api.Issues;
 [ApiExplorerSettings(GroupName = "Issues")]
-public class Api(UserIdentityService userIdentityService, IDocumentSession session) : ControllerBase
+public class Api(UserIdentityService userIdentityService, IDocumentSession session, IMessageBus bus) : ControllerBase
 {
 
 
@@ -40,8 +41,13 @@ public class Api(UserIdentityService userIdentityService, IDocumentSession sessi
             Software = software,
 
         };
-        session.Store<UserIssue>(entity);
-        await session.SaveChangesAsync(token);
+        // What was this doing? Storing the issue in a database. Does that need to be a part of the transaction?
+        // Does that need to happen before we send the response? 
+        //session.Store<UserIssue>(entity);
+        //await session.SaveChangesAsync(token);
+        // var x = await bus.InvokeAsync(someinstance) -- this is for a pub/sub - you expect exactly one handler to handle this and return you something. It is blocking
+        // bus.PublishAsync -- an event. Just letting you know. 
+        await bus.SendAsync(new AddUserIssue(entity.Id, catalogItemId, userInfo.Id, request.Description, request.Impact));
         var response = new UserIssueResponse
         {
             Id = entity.Id,
@@ -81,8 +87,10 @@ public class Api(UserIdentityService userIdentityService, IDocumentSession sessi
     //}
 }
 
-public record UserCreateIssueRequestModel(string Description);
+public enum IssueImpact { NoneSpecified, Question, Inconvenience, WorkStoppage, ProductionStoppage }
+public record UserCreateIssueRequestModel(string Description, IssueImpact Impact);
 
+public record AddUserIssue(Guid Id, Guid SoftwareId, Guid UserId, string Description, IssueImpact Impact);
 public record UserIssueResponse
 {
     public Guid Id { get; set; } // the created issue ID
