@@ -9,9 +9,11 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.6" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
+    <PackageReference Include="WolverineFx.Kafka" Version="2.12.1" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\HelpDeskSharedMessages\HelpDeskSharedMessages.csproj" />
     <ProjectReference Include="..\IssueTracker.Api\IssueTracker.Api.csproj" />
   </ItemGroup>
 
