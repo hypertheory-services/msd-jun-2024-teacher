@@ -1,5 +1,6 @@
 using FluentValidation;
 using IssueTracker.Api.Catalog;
+using IssueTracker.Api.Issues.ReadModels;
 using IssueTracker.Api.Shared;
 using Marten;
 using MicroElements.Swashbuckle.FluentValidation.AspNetCore;
@@ -87,10 +88,12 @@ builder.Services.AddMarten(options =>
     options.UseSystemTextJsonForSerialization();
     options.Connection(connectionString);
     options.DatabaseSchemaName = "issues";
+    options.Projections.Add<UserIssueProjection>(Marten.Events.Projections.ProjectionLifecycle.Inline);
 }).UseLightweightSessions().IntegrateWithWolverine().AddAsyncDaemon(Marten.Events.Daemon.Resiliency.DaemonMode.Solo);
 
 builder.Host.UseWolverine(opts =>
 {
+
     opts.Policies.AutoApplyTransactions();
 });
 

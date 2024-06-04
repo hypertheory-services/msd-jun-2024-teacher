@@ -34,7 +34,7 @@ Content-Type: application/json
 
 {
   "description": "Want Clippy! Not Copilot!",
-  "impact": "Inconvenience"
+  "impact": "WorkStoppage"
 }
 
 
@@ -45,7 +45,7 @@ Content-Type: application/json
 # GET {{apiUrl}}/issues/{{id}}
 # GET {{apiUrl}}/users/{userId}/issues/{issueId}
 
-GET {{apiUrl}}/issues/36dc0e57-7e82-4609-bb69-01442bda0ec4
+GET {{apiUrl}}/issues/ec045b30-2cf3-4413-911f-cbde73f9ed9c
 Accept: application/json
 
 

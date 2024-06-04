@@ -1,4 +1,5 @@
 ﻿using IssueTracker.Api.Catalog;
+using IssueTracker.Api.Issues.ReadModels;
 using IssueTracker.Api.Shared;
 using Marten;
 using Microsoft.AspNetCore.Authorization;
@@ -74,6 +75,20 @@ public class Api(UserIdentityService userIdentityService, IDocumentSession sessi
         return Ok(response);
     }
 
+    [HttpGet("/issues/{issueId:guid}")]
+    public async Task<ActionResult> GetIssueByIdAsync(Guid issueId, CancellationToken token)
+    {
+        var issue = await session.Events.AggregateStreamAsync<UserSoftwareIssue>(issueId, token: token);
+        if (issue is null)
+        {
+            return NotFound();
+        }
+        else
+        {
+            return Ok(issue);
+        }
+    }
+
     //[HttpGet("/catalog/{catalogItemId:guid}/issues/{issueId:guid}/support")]
     //public async Task<ActionResult> GetSupportInfoAsync()
     //{
@@ -137,7 +152,7 @@ public record IssueSoftwareEmbeddedResponse
     public string Description { get; set; } = string.Empty;
 }
 
-public enum IssueStatusType { Submitted }
+public enum IssueStatusType { Submitted, SubmittedAsHighPriority }
 
 
 public record SupportInfo
