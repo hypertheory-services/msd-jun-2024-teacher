@@ -2152,6 +2152,7 @@
       "frameId": null,
       "roundness": null,
       "seed": 9322383,
+<<<<<<< HEAD
       "version": 11,
       "versionNonce": 103643681,
       "isDeleted": false,
@@ -2162,6 +2163,13 @@
         }
       ],
       "updated": 1717532476329,
+=======
+      "version": 10,
+      "versionNonce": 1721403247,
+      "isDeleted": false,
+      "boundElements": null,
+      "updated": 1717532418500,
+>>>>>>> 67e077b8c6ec40277b5b4b0850b224ad54b0c18a
       "link": null,
       "locked": false,
       "text": "Topic: \"help-desk.issue-created\" ",
@@ -2177,9 +2185,15 @@
     {
       "id": "EOpnq_fdfz39kirZ1bL61",
       "type": "text",
+<<<<<<< HEAD
       "x": 576,
       "y": 2124,
       "width": 384.5996398925781,
+=======
+      "x": 593,
+      "y": 2155,
+      "width": 305.11968994140625,
+>>>>>>> 67e077b8c6ec40277b5b4b0850b224ad54b0c18a
       "height": 25,
       "angle": 0,
       "strokeColor": "#1e1e1e",
@@ -2193,6 +2207,7 @@
       "frameId": null,
       "roundness": null,
       "seed": 1861216719,
+<<<<<<< HEAD
       "version": 33,
       "versionNonce": 531381775,
       "isDeleted": false,
@@ -2206,12 +2221,23 @@
       "link": null,
       "locked": false,
       "text": "Topic: \"help-desk.support-tech-assigned\"",
+=======
+      "version": 9,
+      "versionNonce": 1176907169,
+      "isDeleted": false,
+      "boundElements": null,
+      "updated": 1717532437776,
+      "link": null,
+      "locked": false,
+      "text": "Topic: \"help-desk.issue-created\"",
+>>>>>>> 67e077b8c6ec40277b5b4b0850b224ad54b0c18a
       "fontSize": 20,
       "fontFamily": 1,
       "textAlign": "left",
       "verticalAlign": "top",
       "baseline": 18,
       "containerId": null,
+<<<<<<< HEAD
       "originalText": "Topic: \"help-desk.support-tech-assigned\"",
       "lineHeight": 1.25
     },
@@ -2803,6 +2829,10 @@
       "endBinding": null,
       "startArrowhead": null,
       "endArrowhead": "bar"
+=======
+      "originalText": "Topic: \"help-desk.issue-created\"",
+      "lineHeight": 1.25
+>>>>>>> 67e077b8c6ec40277b5b4b0850b224ad54b0c18a
     }
   ],
   "appState": {

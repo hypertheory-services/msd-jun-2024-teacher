@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: help-desk
+spec:
+  selector:
+    matchLabels:
+      app: help-desk
+  template:
+    metadata:
+      labels:
+        app: help-desk
+    spec:
+      containers:
+      - name: help-desk
+        image: some-image:v1.0
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 80
+      - name: auth-side-car
+        image: some-sharedimage:v1.0.2
+        resources:  

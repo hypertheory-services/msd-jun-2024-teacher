@@ -33,7 +33,7 @@ Authorization: {{ordinaryUserToken}}
 Content-Type: application/json
 
 {
-  "description": "Mouse",
+  "description": "Froggie!",
   "impact": "WorkStoppage"
 }
 
