@@ -6,4 +6,21 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Google.Protobuf" Version="3.21.5" />
+    <PackageReference Include="Grpc.Tools" Version="2.49.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Protobuf Include="Protos\catalog-item-created1.proto" GrpcServices="None">
+      <SourceUri>https://raw.githubusercontent.com/hypertheory-services/msd-jun-2024-teacher/main/logical-boundaries/software-center/schema/software-center/catalog-item-created.proto</SourceUri>
+    </Protobuf>
+    <Protobuf Include="Protos\catalog-item-retired.proto" GrpcServices="None">
+      <SourceUri>https://raw.githubusercontent.com/hypertheory-services/msd-jun-2024-teacher/main/logical-boundaries/software-center/schema/software-center/catalog-item-retired.proto</SourceUri>
+    </Protobuf>
+  </ItemGroup>
+
 </Project>

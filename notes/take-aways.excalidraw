@@ -1,0 +1,48 @@
+{
+  "type": "excalidraw",
+  "version": 2,
+  "source": "https://marketplace.visualstudio.com/items?itemName=pomdtr.excalidraw-editor",
+  "elements": [
+    {
+      "id": "fitQMMp_J8DehFiit_YZD",
+      "type": "text",
+      "x": 459,
+      "y": 243,
+      "width": 1032.3792724609375,
+      "height": 575,
+      "angle": 0,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "groupIds": [],
+      "frameId": null,
+      "roundness": null,
+      "seed": 779304311,
+      "version": 839,
+      "versionNonce": 1761731257,
+      "isDeleted": false,
+      "boundElements": null,
+      "updated": 1717615510254,
+      "link": null,
+      "locked": false,
+      "text": "Forget about \"Microservices\"\n\nWrite things that can be deployed frequently, and are focused so people can understand them.\n\nURLs are a lie we tell the consumers of our services. They can point at ANYTHING and switch without\nthem knowing.\n\nTest in \"production\" \n\nPrefer asynchronous messaging over RPCs.\n\nDatabases are going to cause you issues. See if you can slowly liberate yourselves.\n\nI expect the useful stuff will be:\n\n    - Creating multiple services in one app (repository).\n    - Some messaging can make things much more reliable and faster.\n    - Remember: \"This meeting could have been an email!\", or \"can you just text and not call?\" \n        - that is async.\n\nMicroservices are independently deployable. That is the goal. Not \"size\" or whatever.\n\n",
+      "fontSize": 20,
+      "fontFamily": 1,
+      "textAlign": "left",
+      "verticalAlign": "top",
+      "baseline": 568,
+      "containerId": null,
+      "originalText": "Forget about \"Microservices\"\n\nWrite things that can be deployed frequently, and are focused so people can understand them.\n\nURLs are a lie we tell the consumers of our services. They can point at ANYTHING and switch without\nthem knowing.\n\nTest in \"production\" \n\nPrefer asynchronous messaging over RPCs.\n\nDatabases are going to cause you issues. See if you can slowly liberate yourselves.\n\nI expect the useful stuff will be:\n\n    - Creating multiple services in one app (repository).\n    - Some messaging can make things much more reliable and faster.\n    - Remember: \"This meeting could have been an email!\", or \"can you just text and not call?\" \n        - that is async.\n\nMicroservices are independently deployable. That is the goal. Not \"size\" or whatever.\n\n",
+      "lineHeight": 1.25
+    }
+  ],
+  "appState": {
+    "gridSize": null,
+    "viewBackgroundColor": "#ffffff"
+  },
+  "files": {}
+}

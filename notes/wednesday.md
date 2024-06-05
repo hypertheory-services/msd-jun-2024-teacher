@@ -16,6 +16,16 @@ We will also reset our database, etc.
 
 - Review 
     - Services - Microservices - What's the difference?
+        - Business Focused
+        - "fits in your head"
+        - Own state and state process (this is huge. stand by)
+        - "Branch By Deployment"
+            - In Git, we have branches. They represent parallel universes
+            - In source code we can "branch by abstraction"
+                - An `IDoImportantStuff` service can have one implementation one day, and a different one later.
+            - With services, we can branch by "URI".
+                - Allows us to evolve our solution over time without
+                    having to evolve the entire thing.
     - [Data on the Inside vs. Data On the Outside](https://queue.acm.org/detail.cfm?id=3415014)
     - How good services go bad.
     - How to make them gooderer.

@@ -3,6 +3,7 @@ using HelpDeskSharedMessages;
 using IssueTracker.Api.Catalog;
 using IssueTracker.Api.Issues.ReadModels;
 using IssueTracker.Api.Shared;
+using JasperFx.Core;
 using Marten;
 using MicroElements.Swashbuckle.FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authorization;
@@ -12,6 +13,7 @@ using System.Reflection;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using Wolverine;
+using Wolverine.ErrorHandling;
 using Wolverine.Kafka;
 using Wolverine.Marten;
 
@@ -96,10 +98,16 @@ builder.Services.AddMarten(options =>
 var kafkaConnectionString = builder.Configuration.GetValue<string>("kafka") ?? throw new Exception("Need a kafka broker");
 builder.Host.UseWolverine(opts =>
 {
-    opts.UseKafka(kafkaConnectionString); // more here later
+    opts.OnException<RaceConditionException>().RetryWithCooldown(50.Milliseconds(), 100.Milliseconds(), 5.Minutes());
+    opts.UseKafka(kafkaConnectionString).ConfigureConsumers(c =>
+    {
+        c.AutoOffsetReset = Confluent.Kafka.AutoOffsetReset.Earliest; // that I've not seen.
+        c.GroupId = "help-desk-issue-tracker-tacos";
+    }); ; // more here later
 
     opts.Policies.AutoApplyTransactions();
-
+    opts.ListenToKafkaTopic("softwarecenter.catalog-item-created").ProcessInline();
+    opts.ListenToKafkaTopic("softwarecenter.catalog-item-retired").ProcessInline();
     opts.PublishMessage<HelpDeskIssueCreated>().ToKafkaTopic("help-desk.issue-created");
 });
 
