@@ -75,7 +75,8 @@ public class Api(UserIdentityService userIdentityService, IDocumentSession sessi
         return Ok(response);
     }
 
-    [HttpGet("/issues/{issueId:guid}")]
+    [HttpGet("/v2/issues/{issueId:guid}")]
+    [HttpGet("/v1/issues/{issueId:guid}")]
     public async Task<ActionResult> GetIssueByIdAsync(Guid issueId, CancellationToken token)
     {
         var issue = await session.Events.AggregateStreamAsync<UserSoftwareIssue>(issueId, token: token);
